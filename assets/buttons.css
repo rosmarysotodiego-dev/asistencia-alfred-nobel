@@ -1,0 +1,55 @@
+/* Estados compartidos: normal, hover y pulsado. */
+button, a.button {
+  cursor: pointer;
+  transition: background-color .16s ease, color .16s ease,
+    border-color .16s ease, box-shadow .16s ease, filter .16s ease,
+    transform .1s ease;
+}
+button:not(.nav):not(:disabled), a.button {
+  box-shadow: 0 2px 4px #102b451a;
+}
+@media (hover: hover) {
+  button:not(:disabled):hover, a.button:hover {
+    filter: brightness(.94);
+    box-shadow: 0 4px 9px #102b4526;
+    transform: translateY(-1px);
+  }
+  button.secondary:not(:disabled):hover,
+  button.teacher-action:not(:disabled):hover,
+  button.closemodal:not(:disabled):hover { background-color: #e3f4f1; }
+  button.danger:not(:disabled):hover { background-color: #ffdddd; }
+  button.nav:not(:disabled):hover {
+    background-color: #ffffff20;
+    color: #ffffff;
+    box-shadow: none;
+  }
+  button.nav.active:not(:disabled):hover {
+    color: #6be4cf;
+    box-shadow: inset 3px 0 var(--teal);
+  }
+}
+button:not(:disabled):active, a.button:active {
+  transform: translateY(2px);
+  filter: brightness(.86);
+  box-shadow: inset 0 3px 6px #102b4540;
+  transition-duration: .05s;
+}
+button.nav.active:not(:disabled):active {
+  box-shadow: inset 3px 0 var(--teal), inset 0 3px 6px #0003;
+}
+button:focus-visible, a.button:focus-visible {
+  outline: 3px solid #36cdbb;
+  outline-offset: 3px;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+  transform: none;
+  filter: none;
+  box-shadow: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  button, a.button { transition: none; }
+  button:not(:disabled):hover, button:not(:disabled):active,
+  a.button:hover, a.button:active { transform: none; }
+}
